@@ -14,7 +14,7 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to Image.order(:created_at).last
     follow_redirect!
-    assert_select "img[src='#{image_src}']"
+    assert_select 'img[src=?]', image_src
   end
 
   test 'does not add invalid images' do
