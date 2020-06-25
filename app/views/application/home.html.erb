@@ -6,7 +6,9 @@
   <ul id="image-list">
     <% @images.each do |image| %>
       <li>
-        <%= image_tag image.url %>
+        <a href="<%= image_path(image) %>">
+          <%= image_tag image.url %>
+        </a>
       </li>
     <% end %>
   </ul>
