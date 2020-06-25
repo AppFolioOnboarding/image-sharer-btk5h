@@ -1,6 +1,19 @@
 <%= form_with scope: :image, url: images_path, local: true do |f| %>
   <h1>Submit an Image</h1>
 
+  <% if @image.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@image.errors.count, 'issue') %> prevented your image from being saved:
+      </h2>
+      <ul>
+        <% @image.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <p>
     <%= f.label :url, 'Image URL' %><br>
     <%= f.text_field :url %>
