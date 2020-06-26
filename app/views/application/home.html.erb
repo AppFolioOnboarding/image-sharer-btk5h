@@ -3,13 +3,5 @@
 <%= link_to "Submit a new image", new_image_path %>
 
 <main>
-  <ul id="image-list">
-    <% @images.each do |image| %>
-      <li>
-        <a href="<%= image_path(image) %>">
-          <%= image_tag image.url, class: 'image-thumbnail' %>
-        </a>
-      </li>
-    <% end %>
-  </ul>
+  <%= render 'image_list', images: @images %>
 </main>
