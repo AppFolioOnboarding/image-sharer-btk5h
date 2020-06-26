@@ -37,4 +37,22 @@ class ImageTest < ActiveSupport::TestCase
     refute @image.valid?
     assert_not_nil @image.errors[:url]
   end
+
+  test 'has no tags by default' do
+    assert_equal [], @image.tag_list
+  end
+
+  test 'newline delimited tags can be added' do
+    @image.tag_list = <<-TAGS
+      first tag
+      second tag
+    TAGS
+
+    assert_equal ['first tag', 'second tag'], @image.tag_list
+  end
+
+  test 'tags are normalized to lowercase' do
+    @image.tag_list = 'FOO'
+    assert_equal ['foo'], @image.tag_list
+  end
 end
