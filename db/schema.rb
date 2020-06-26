@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_26_201128) do
+ActiveRecord::Schema.define(version: 2020_06_26_201253) do
 
   create_table "images", force: :cascade do |t|
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "tags", default: "", null: false
   end
 
   create_table "taggings", force: :cascade do |t|
