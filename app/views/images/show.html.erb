@@ -1,3 +1,14 @@
 <main>
   <%= image_tag @image.url %>
+
+  <h2>Tags</h2>
+  <% if @image.tag_list.present? %>
+    <ul id="tag-list">
+      <% @image.tag_list.each do |tag| %>
+        <li><%= tag %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No tags</p>
+  <% end %>
 </main>
