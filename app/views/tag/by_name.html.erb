@@ -1,0 +1,11 @@
+<main>
+  <h1>Images tagged with '<%= @tag_name %>'</h1>
+  <% if @images.present? %>
+    <p>
+      <%= pluralize(@images.count, 'result') %>
+    </p>
+    <%= render 'image_list', images: @images %>
+  <% else %>
+    <p>There aren't any images tagged with '<%= @tag_name %>' :(</p>
+  <% end %>
+</main>

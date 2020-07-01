@@ -1,3 +1,7 @@
 <h1>Hello world</h1>
 
 <%= link_to "Submit a new image", new_image_path %>
+
+<main>
+  <%= render 'image_list', images: @images %>
+</main>

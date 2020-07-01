@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root 'application#home'
 
   resources :images
+
+  get 'tag/:tag_name', to: 'tag#by_name', as: 'tag_by_name'
 end

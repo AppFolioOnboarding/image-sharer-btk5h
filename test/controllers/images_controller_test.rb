@@ -23,4 +23,18 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     end
     assert_select '#error_explanation'
   end
+
+  test 'image information is shown' do
+    image_src = 'http://example.com/foo.png'
+    tag = 'bar'
+    image = Image.create!(url: image_src, tag_list: tag)
+
+    get image_url(image)
+    assert_response :ok
+
+    assert_select 'img[src=?]', image_src
+    assert_select '#tag-list' do
+      assert_select 'li a[href=?]', tag_by_name_path(tag), tag
+    end
+  end
 end
